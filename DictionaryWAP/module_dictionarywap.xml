@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_dictionarywap" default="compile.module.dictionarywap">
+  <dirname property="module.dictionarywap.basedir" file="${ant.file.module_dictionarywap}"/>
+  
+  <property name="module.jdk.home.dictionarywap" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.dictionarywap" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.dictionarywap" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.dictionarywap" value="-encoding UTF-8 -source 7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="dictionarywap.output.dir" value="${module.dictionarywap.basedir}/target/classes"/>
+  <property name="dictionarywap.testoutput.dir" value="${module.dictionarywap.basedir}/target/test-classes"/>
+  
+  <path id="dictionarywap.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="dictionarywap.module.production.classpath">
+    <path refid="${module.jdk.classpath.dictionarywap}"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+    <path refid="library.maven:_javax.servlet.jsp:javax.servlet.jsp-api:2.3.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jcl:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:5.0.1.release.classpath"/>
+  </path>
+  
+  <path id="dictionarywap.runtime.production.module.classpath">
+    <pathelement location="${dictionarywap.output.dir}"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jcl:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:5.0.1.release.classpath"/>
+  </path>
+  
+  <path id="dictionarywap.module.classpath">
+    <path refid="${module.jdk.classpath.dictionarywap}"/>
+    <pathelement location="${dictionarywap.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+    <path refid="library.maven:_javax.servlet.jsp:javax.servlet.jsp-api:2.3.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jcl:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:5.0.1.release.classpath"/>
+  </path>
+  
+  <path id="dictionarywap.runtime.module.classpath">
+    <pathelement location="${dictionarywap.testoutput.dir}"/>
+    <pathelement location="${dictionarywap.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+    <path refid="library.maven:_javax.servlet.jsp:javax.servlet.jsp-api:2.3.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jcl:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:5.0.12.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:5.0.1.release.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.dictionarywap">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.dictionarywap">
+    <patternset refid="excluded.from.module.dictionarywap"/>
+  </patternset>
+  
+  <path id="dictionarywap.module.sourcepath">
+    <dirset dir="${module.dictionarywap.basedir}">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.dictionarywap" depends="compile.module.dictionarywap.production,compile.module.dictionarywap.tests" description="Compile module DictionaryWAP"/>
+  
+  <target name="compile.module.dictionarywap.production" depends="register.custom.compilers" description="Compile module DictionaryWAP; production classes">
+    <mkdir dir="${dictionarywap.output.dir}"/>
+    <javac2 destdir="${dictionarywap.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.dictionarywap}/javac">
+      <compilerarg line="${compiler.args.dictionarywap}"/>
+      <bootclasspath refid="dictionarywap.module.bootclasspath"/>
+      <classpath refid="dictionarywap.module.production.classpath"/>
+      <src refid="dictionarywap.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.dictionarywap"/>
+    </javac2>
+    
+    <copy todir="${dictionarywap.output.dir}">
+      <fileset dir="${module.dictionarywap.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.dictionarywap.tests" depends="register.custom.compilers,compile.module.dictionarywap.production" description="compile module DictionaryWAP; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.dictionarywap" description="cleanup module">
+    <delete dir="${dictionarywap.output.dir}"/>
+    <delete dir="${dictionarywap.testoutput.dir}"/>
+  </target>
+</project>

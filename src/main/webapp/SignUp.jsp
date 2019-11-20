@@ -28,8 +28,18 @@
                 </div>
             <div class="form-group">
                 <label for="userName">*Choose Username:</label>
-                <input type="text" class="form-control" id="userName" name="userName" aria-describedby="userNameHelp" placeholder="e.g. John321" title="Enter your username" autofocus>
+                <input type="text" class="form-control" id="userName" name="username" aria-describedby="userNameHelp" placeholder="e.g. John321" title="Enter your username" autofocus>
                 <small id="userNameHelp" class="form-text text-muted">Enter your username.</small>
+            </div>
+            <div class="form-group">
+                <label for="lname">*First Name:</label>
+                <input type="text" class="form-control" id="fname" name="firstname" aria-describedby="firstHelp" placeholder="e.g. John" title="Enter your first name" autofocus>
+                <small id="firstName" class="form-text text-muted">Enter your First Name.</small>
+            </div>
+            <div class="form-group">
+                <label for="lname">*Last Name:</label>
+                <input type="text" class="form-control" id="lname" name="lastname" aria-describedby="firstHelp" placeholder="e.g. John" title="Enter your last name" autofocus>
+                <small id="lastName" class="form-text text-muted">Enter your Last Name.</small>
             </div>
             <div class="form-group">
                 <label for="email">*Enter Email-Address:</label>
@@ -40,6 +50,7 @@
                 <label for="password">*Choose Password:</label>
                 <input type="password" class="form-control" id="password" name="password" aria-describedby="userNameHelp" placeholder="xxxxx" title="Select your password" autofocus>
             </div>
+
             <div class="form-group">
                 <label for="cpassword">*Confirm Password:</label>
                 <input type="password" class="form-control" id="cpassword" name="password" aria-describedby="cpassword" placeholder="xxxxx" title="Re-enter your password" autofocus>

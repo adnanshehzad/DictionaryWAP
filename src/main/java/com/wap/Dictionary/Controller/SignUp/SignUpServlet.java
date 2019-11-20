@@ -1,6 +1,7 @@
 package com.wap.Dictionary.Controller.SignUp;
 
 import com.wap.Dictionary.Model.User.UserEntity;
+import com.wap.Dictionary.daos.UserDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,10 @@ import java.io.IOException;
 
 @WebServlet(name = "SignUpServlet",urlPatterns = {"/signup"})
 public class SignUpServlet extends HttpServlet {
+    UserDao userDao;
+    public SignUpServlet(){
+        this.userDao=new UserDao();
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username=request.getParameter("username");
         String fname=request.getParameter("firstname");
@@ -35,9 +40,13 @@ public class SignUpServlet extends HttpServlet {
         if(password.equals("")) {
             missingFieldsMsg += "<span style='color:red;'>Password is missing.</span><br/>";
         }
-        //Checking that user Name already exists or not.
-
-        if(!missingFieldsMsg.equals("")) {
+        //Checking that UserName Already Exists or not.
+        boolean usernamealreadyexist=userDao.userNameAlreadyExist(username);
+        if(usernamealreadyexist==true){
+            missingFieldsMsg += "<span style='color:red;'>User Name Already Exists. Please Choose Different One.</span><br/>";
+        }
+        if(!missingFieldsMsg.equals("") || usernamealreadyexist==true) {
+            System.out.println("Error Exists in Fields");
             request.setAttribute("isErrMsgsPresent", true);
             request.setAttribute("errMsgs", missingFieldsMsg);
             // forward (return) back to sender

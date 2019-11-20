@@ -21,9 +21,11 @@ public class SaveSignupServlet extends HttpServlet {
         //Adnan Shehzad Code for saving the data into the database
         UserEntity userEntity= (UserEntity) request.getAttribute("userdata");
         userDao.insertUserInfo(userEntity); //Inserting into Database
+        System.out.println("SignUp Data Inserted Successfully into Database");
+        response.sendRedirect(request.getContextPath()+ "/SignIn.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            response.sendRedirect("/SignUp.jsp");
+            response.sendRedirect(request.getContextPath() +"/SignUp.jsp");
     }
 }

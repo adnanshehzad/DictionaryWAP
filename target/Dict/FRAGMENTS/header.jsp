@@ -2,13 +2,13 @@
   Created by IntelliJ IDEA.
   User: INNOVATION
   Date: 11/19/2019
-  Time: 3:28 PM
+  Time: 6:59 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Hellogit</title>
+    <title>Title</title>
 </head>
 <body>
 

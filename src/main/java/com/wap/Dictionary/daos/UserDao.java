@@ -29,34 +29,33 @@ public class UserDao implements IUser{
     }
     @Override
     public void insertUserInfo(UserEntity user) {
-        String sql="insert into 'dictionary_schema'.userinfo values(?,?,?,?,?)";
+        String sql="insert into `dictionary_schema`.userinfo values(?,?,?,?,?)";
         Connection connection=null;
-        try{
-            connection=dataSource.getConnection();
-            PreparedStatement ps=connection.prepareStatement(sql);
-            ps.setString(1,user.getUserName());
-            ps.setString(2,user.getFirstName());
-            ps.setString(3,user.getLastName());
-            ps.setString(4,user.getEmail());
-            ps.setString(5,user.getPassword());
+        try {
+            connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, user.getUserName());
+            ps.setString(2, user.getFirstName());
+            ps.setString(3, user.getLastName());
+            ps.setString(4, user.getEmail());
+            ps.setString(5, user.getPassword());
             ps.executeUpdate();
             ps.close();
-        }
-        catch (Exception exc){
+        } catch (SQLException exc) {
             throw new RuntimeException(exc);
-        }
-        finally {
+        } finally {
             if (connection != null) {
                 try {
                     connection.close();
-                } catch (SQLException e) {}
+                } catch (SQLException e) {
+                }
             }
         }
     }
 
     @Override
     public boolean userNameAlreadyExist(String username) {
-        String sql="Select * from 'dictionary_schema'.userinfo where username=?";
+        String sql="Select * from `dictionary_schema`.userinfo where username=?";
         Connection connection=null;
 
         try{
@@ -89,7 +88,7 @@ public class UserDao implements IUser{
 
     @Override
     public boolean checkUserNameandPassword(String username, String password) {
-        String sql="Select * from 'dictionary_schema'.userinfo where username=? and password=?";
+        String sql="Select * from `dictionary_schema`.userinfo where username=? and password=?";
         Connection connection=null;
         try {
             connection=dataSource.getConnection();

@@ -53,6 +53,7 @@ public class SignUpServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("/Sign");
+        response.sendRedirect("/SignUp.jsp");
+        //request.getRequestDispatcher("/SignUp.jsp").forward(request, response);
     }
 }

@@ -14,28 +14,37 @@
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css" rel="stylesheet" integrity="sha384-N8DsABZCqc1XWbg/bAlIDk7AS/yNzT5fcKzg/TwfmTuUqZhGquVmpb5VvfmLcMzp" crossorigin="anonymous">
     <%--<link rel="stylesheet" href="css/style.css">--%>
 
-    <title>Sign-In</title>
+    <title>Sign-Up</title>
 </head>
 <body>
 
 <div class="container"><br/>
-    <form id="formCustomerContact" method="post" action="SignIn">
+    <form id="formCustomerContact" method="post" action="SignUp">
         <fieldset>
-            <legend>Sign In Form</legend>
+            <legend>Sign Up Form</legend>
                 <div>
                     <p>
                     </p>
                 </div>
             <div class="form-group">
-                <label for="userName">*Username:</label>
+                <label for="userName">*Choose Username:</label>
                 <input type="text" class="form-control" id="userName" name="userName" aria-describedby="userNameHelp" placeholder="e.g. John321" title="Enter your username" autofocus>
                 <small id="userNameHelp" class="form-text text-muted">Enter your username.</small>
             </div>
             <div class="form-group">
-                <label for="password">*Password:</label>
-                <input type="password" class="form-control" id="password" name="password" aria-describedby="userNameHelp" placeholder="xxxxx" title="Enter your password" autofocus>
+                <label for="email">*Enter Email-Address:</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="e.g. abc@abc.com" title="Enter your email" autofocus>
+                <small id="emailHelp" class="form-text text-muted">Enter your Email.</small>
             </div>
-            <button id="btnSubmit" type="submit" class="btn btn-primary btn-block">Submit</button>
+            <div class="form-group">
+                <label for="password">*Choose Password:</label>
+                <input type="password" class="form-control" id="password" name="password" aria-describedby="userNameHelp" placeholder="xxxxx" title="Select your password" autofocus>
+            </div>
+            <div class="form-group">
+                <label for="cpassword">*Confirm Password:</label>
+                <input type="password" class="form-control" id="cpassword" name="password" aria-describedby="cpassword" placeholder="xxxxx" title="Re-enter your password" autofocus>
+            </div>
+            <button id="btnSubmit" type="submit" class="btn btn-primary btn-block">SignUp</button>
         </fieldset>
     </form>
 </div>

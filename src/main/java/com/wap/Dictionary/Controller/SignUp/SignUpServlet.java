@@ -35,6 +35,8 @@ public class SignUpServlet extends HttpServlet {
         if(password.equals("")) {
             missingFieldsMsg += "<span style='color:red;'>Password is missing.</span><br/>";
         }
+        //Checking that user Name already exists or not.
+
         if(!missingFieldsMsg.equals("")) {
             request.setAttribute("isErrMsgsPresent", true);
             request.setAttribute("errMsgs", missingFieldsMsg);
@@ -51,6 +53,6 @@ public class SignUpServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("signin");
+        response.sendRedirect("/Sign");
     }
 }

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<<<<<<< HEAD
 <header>
      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="<c:out value="${baseURL}"></c:out>">CS472-WAP ::: Lab 13</a>
@@ -35,3 +36,13 @@
         </div>
     </nav>
 </header>
+=======
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+>>>>>>> b38ba8699a787ca6551127382d3c495ccf58810b

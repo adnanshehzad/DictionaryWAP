@@ -1,13 +1,13 @@
 package com.wap.Dictionary.daos;
 
 import com.wap.Dictionary.Model.User.UserEntity;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDao implements IUser{
@@ -56,12 +56,67 @@ public class UserDao implements IUser{
 
     @Override
     public boolean userNameAlreadyExist(String username) {
-        //String sql=
+        String sql="Select * from 'dictionary_schema'.userinfo where username=?";
+        Connection connection=null;
+
+        try{
+        connection=dataSource.getConnection();
+        PreparedStatement ps=connection.prepareStatement(sql);
+        ps.setString(1,username);
+        ResultSet rs= ps.executeQuery();
+        while(rs.next()){
+            String uname=rs.getString("username");
+            String fname=rs.getString("firstname");
+            String lname=rs.getString("lastname");
+            String email=rs.getString("email");
+            String pass=rs.getString("password");
+            UserEntity user=new UserEntity(uname,fname,lname,email,pass);
+            return true;
+        }
+        }
+        catch (Exception exc){
+            throw new RuntimeException(exc);
+        }
+        finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {}
+            }
+        }
         return false;
     }
 
     @Override
     public boolean checkUserNameandPassword(String username, String password) {
+        String sql="Select * from 'dictionary_schema'.userinfo where username=? and password=?";
+        Connection connection=null;
+        try {
+            connection=dataSource.getConnection();
+            PreparedStatement ps=connection.prepareStatement(sql);
+            ps.setString(1,username);
+            ps.setString(2,password);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next()){
+                String uname=rs.getString("username");
+                String fname=rs.getString("firstname");
+                String lname=rs.getString("lastname");
+                String email=rs.getString("email");
+                String pass=rs.getString("password");
+                UserEntity user=new UserEntity(uname,fname,lname,email,pass);
+                return true;
+            }
+        }
+        catch (Exception exc){
+            throw new RuntimeException(exc);
+        }
+        finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {}
+            }
+        }
         return false;
     }
 }

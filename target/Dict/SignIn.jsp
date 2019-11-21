@@ -46,6 +46,5 @@
     <span style="float:right;" class="text-muted">Total Hit Count for the entire WebApp: 4</span>
 </div>
 
-
 </body>
 </html>

@@ -7,6 +7,4 @@
     <welcome-file-list>
         <welcome-file>SignUp.jsp</welcome-file>
     </welcome-file-list>
-
-
 </web-app>

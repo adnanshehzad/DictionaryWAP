@@ -21,6 +21,5 @@ public class SignInServlet extends HttpServlet {
         pw.println("fafa");
         System.out.println("Hello");
         request.getRequestDispatcher("/SignIn.jsp").forward(request, response);
-
     }
 }

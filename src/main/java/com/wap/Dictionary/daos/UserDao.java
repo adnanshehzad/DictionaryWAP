@@ -70,6 +70,8 @@ public class UserDao implements IUser{
             String email=rs.getString("email");
             String pass=rs.getString("password");
             UserEntity user=new UserEntity(uname,fname,lname,email,pass);
+            ps.close();
+            rs.close();
             return true;
         }
         }

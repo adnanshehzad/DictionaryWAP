@@ -9,39 +9,52 @@
 <html>
 <head>
     <title>Search Page</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
-
-<div class="header">
-    <h1>MUM Dictionary</h1>
-</div>
-<hr>
-<div class="wrapper">
-    <div class="words">
-        <form action="" method ="GET">
-            <input type="text" id="search" name="search" placeholder="search...">
-            <button onclick="search()">Go</button>
-        </form>
-
-
-        <h3>Existing Words</h3>
-
-        <ul id="word_list"></ul>
-
+<div class="search-div">
+    <div class="header">
+        <h1>MUM Dictionary</h1>
     </div>
 
-    <div class="word">
-        <h3 id="word_text">WORD</h3>
-        <p id="definition">this is definition </p>
-        <hr>
+    <div class="wrapper">
+        <div class="words">
 
-        <h3>Synonyms: </h3>
-        <li id="synonym"> syn1</li>
+            <div class="column">
+                <div class="input-field col s12">
+                    <input id="search" type="text" placeholder="search..." name="search" class="validate">
+                    <label for="search_input">Search</label>
+                    <button onclick="search()">Go</button>
+                </div>
+            </div>
 
 
 
+
+            <h5>Existing Words</h5>
+
+            <ul id="word_list"></ul>
+
+        </div>
+
+        <div class="word">
+            <h3 id="word_text">WORD</h3>
+            <p id="definition">this is definition </p>
+            <hr>
+
+            <h3>Synonyms: </h3>
+            <li id="synonym"> syn1</li>
+
+        </div>
     </div>
+
 </div>
 
 <script src="script/app.js"></script>

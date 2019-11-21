@@ -10,7 +10,7 @@ body{
     text-align: center;
     border: 1px solid gray;
     border-radius: 8px 8px 0px 0px;
-    
+
 }
 .wrapper{
     width: 50%;
@@ -32,9 +32,10 @@ h3{
 .words {
 
     width: 29%;
-    background: #dcdcdc;
+    background: #e7dddd;
     padding-top: 10px;
     float: left;
+    padding-left: 30px;
 }
 
 .word{

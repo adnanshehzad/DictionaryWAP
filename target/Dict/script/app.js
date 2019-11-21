@@ -33,6 +33,18 @@ var dictionary = [
         syn:["cute","little","grapes"]
     },
 
+
+
+
+    {
+        word:"bmd",
+        def:"new baby in a family",
+        syn:["cute","little","grapes"]
+    },
+
+
+
+
     {
         word:"mobile",
         def:"mobile is a phoine",

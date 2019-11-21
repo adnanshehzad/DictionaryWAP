@@ -7,8 +7,13 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %> 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+<%@ include file="FRAGMENTS/header.jsp"%>
+
 
     <link rel="stylesheet" href="css/sty.css">
     <!-- Compiled and minified CSS -->
@@ -26,12 +31,25 @@
         </div>
     </div>
     <div class="row center-align">
+    
         <h5>Sign up</h5>
         <h6>Sign up to create MUM Dictionary Account</h6>
     </div>
 
 
-    <form action="" method="post">
+    <form action="signup" method="post">
+    
+    
+        <c:if test="${isErrMsgsPresent == true }">
+                    <div>
+                        <p>
+                            ${errMsgs}
+                        </p>
+                    </div>
+                </c:if>
+              
+    
+    
         <div class="row">
             <div class="input-field col s12">
                 <input id="username_input" name="username" type="text" class="validate">

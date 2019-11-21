@@ -6,6 +6,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.GetRequest;
 import com.mysql.cj.xdevapi.JsonArray;
+import com.mysql.cj.xdevapi.JsonValue;
 import com.wap.Dictionary.Model.SearchInfo.SearchEntity;
 import com.wap.Dictionary.daos.SearchDao;
 import org.json.JSONArray;
@@ -17,14 +18,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "SearchServlet",urlPatterns = {"/search"})
 public class SearchServlet extends HttpServlet {
     private SearchDao searchDao;
     public SearchServlet(){this.searchDao=new SearchDao();}; //Constructor
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)  {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchword=request.getParameter("searchkeyword");
         JSONObject jsondatabase=searchDao.searchWordFromDatabase(searchword);
         System.out.println("Json database value is : "+ jsondatabase);
@@ -37,28 +41,53 @@ public class SearchServlet extends HttpServlet {
                         .asJson();
                 JSONObject jsondata = response1.getBody().getObject();
                 String json = jsondata.toString();
-                String word = response1.getBody().getObject().getString("word");
+                String word = jsondata.getString("word");
                 System.out.println("Json data is " + jsondata);
                 System.out.println("Json word is " + word);
-                SearchEntity searchEntity = new SearchEntity(word, json);
+                HttpSession session=request.getSession();
+                SearchEntity searchEntity = new SearchEntity(word, json,session);
                 request.setAttribute("searchdata", searchEntity);
+                showDatatoSearchJsp(request,response,jsondata);
                 RequestDispatcher rd = request.getRequestDispatcher("/Insert-search");
                 rd.forward(request, response);
-//            JSONArray array=response1.getBody().getObject().getJSONArray("results");
-//            for(int i=0;i<array.length();i++){
-//                JSONObject obj1= array.getJSONObject(i);
-//                String definition=obj1.getString("definition");
-//                String partofspeech=obj1.getString("partOfSpeech");
-//                System.out.println("Definition is :" + definition + " Part of Speech is : " + partofspeech);
-                //}
+
+            /*JSONArray array=jsondata.getJSONArray("results");
+            //for(int i=0;i<array.length();i++){
+                JSONObject obj1= array.getJSONObject(1);
+               String definition=obj1.getString("definition");
+                String partofspeech=obj1.getString("partOfSpeech");
+                System.out.println("Definition is :" + definition *//*+*//* *//*" Part of Speech is : " + partofspeech*//*);
+               // }*/
             } catch (UnirestException | ServletException | IOException e) {
                 e.printStackTrace();
             }
         }
         else{
             //Show data From Database
+            showDatatoSearchJsp(request,response,jsondatabase);
+            RequestDispatcher rd = request.getRequestDispatcher("/Search.jsp");
+            rd.forward(request, response);
         }
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    }
+    public void showDatatoSearchJsp(HttpServletRequest request, HttpServletResponse response,JSONObject obj){
+        JSONArray array=obj.getJSONArray("results");
+        //for(int i=0;i<array.length();i++){
+        JSONObject resultsdata= array.getJSONObject(1);
+        String definition=resultsdata.getString("definition");
+        String word=obj.getString("word");
+        String partofspeech=resultsdata.getString("partOfSpeech");
+        //JSONObject synonmns=obj.getJSONObject("synonyms");
+        //List<String> list = new ArrayList<String>();
+
+        //syno.append(synonmns.toString());
+        //System.out.println(list.toString());
+        request.setAttribute("def",definition);
+        request.setAttribute("pos",partofspeech);
+        request.setAttribute("word",word);
+        //request.setAttribute("synonymns",synonmns);
+        System.out.println("Definition is :" + definition + " Part of Speech is : " + partofspeech + "Synonmn is: " );
+        // }
     }
 }

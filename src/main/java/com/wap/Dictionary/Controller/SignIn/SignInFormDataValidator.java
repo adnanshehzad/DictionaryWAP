@@ -1,14 +1,17 @@
 package com.wap.Dictionary.Controller.SignIn;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.wap.Dictionary.Model.User.UserEntity;
+import com.wap.Dictionary.daos.SearchDao;
 import com.wap.Dictionary.daos.UserDao;
 
 /**
@@ -18,6 +21,7 @@ import com.wap.Dictionary.daos.UserDao;
 public class SignInFormDataValidator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDao userDao ;
+	private SearchDao searchDao;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -25,13 +29,11 @@ public class SignInFormDataValidator extends HttpServlet {
     public SignInFormDataValidator() {
 		super();
     	this.userDao=new UserDao();
+    	this.searchDao=new SearchDao();
 
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 		
@@ -89,8 +91,14 @@ public class SignInFormDataValidator extends HttpServlet {
         		request.setAttribute("isAccountExist", true);
         		request.setAttribute("welcomeUser", welcomeStr);
         		System.out.println("Welcome " + welcomeStr);
-           		//back to homepage + show Welcome , change SignIn - SignOut        	
+				HttpSession session = request.getSession();
+				session.setAttribute("username",userName);
+				List<String> previouswords=searchDao.ShowUserPreviousSearchWords((String) session.getAttribute("username"));
+           		System.out.println("Previous Words List for user is :" + previouswords.toString());
+				session.setAttribute("previouswords",previouswords);
+				//back to homepage + show Welcome , change SignIn - SignOut
         		response.sendRedirect(request.getContextPath() + "/Search.jsp");
+
 
         	}else {
         		

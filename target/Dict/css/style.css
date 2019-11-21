@@ -45,6 +45,11 @@ h3{
 
 }
 
+#logout{
+
+    background: url('https://api.iconify.design/mdi-logout.svg') no-repeat center center / contain;
+}
+
 #word_list{
 
     max-height: 400px;

@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
 
 import com.wap.Dictionary.Model.User.UserEntity;
 import com.wap.Dictionary.daos.UserDao;
@@ -50,6 +53,7 @@ public class SignInFormDataController extends HttpServlet {
     		request.setAttribute("isAccountExist", true);
     		request.setAttribute("welcomeUser", welcomeStr);
     		System.out.println("Welcome " + welcomeStr);
+
        		//back to homepage + show Welcome , change SignIn - SignOut
     		request.getRequestDispatcher("/index.jsp").forward(request, response);
 

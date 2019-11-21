@@ -24,7 +24,7 @@ public class SearchServlet extends HttpServlet {
     private SearchDao searchDao;
     public SearchServlet(){this.searchDao=new SearchDao();}; //Constructor
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)  {
         String searchword=request.getParameter("searchkeyword");
         JSONObject jsondatabase=searchDao.searchWordFromDatabase(searchword);
         System.out.println("Json database value is : "+ jsondatabase);
@@ -51,7 +51,7 @@ public class SearchServlet extends HttpServlet {
 //                String partofspeech=obj1.getString("partOfSpeech");
 //                System.out.println("Definition is :" + definition + " Part of Speech is : " + partofspeech);
                 //}
-            } catch (UnirestException e) {
+            } catch (UnirestException | ServletException | IOException e) {
                 e.printStackTrace();
             }
         }

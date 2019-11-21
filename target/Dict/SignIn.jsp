@@ -6,45 +6,86 @@
   To change this template use File | Settings | File Templates.
 --%>
 
+
+<%@ page isELIgnored="false" %> 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%--    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-uhut8PejFZO8994oEgm/ZfAv0mW1/b83nczZzSwElbeILxwkN491YQXsCFTE6+nx" crossorigin="anonymous">--%>
-    <%--  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/united/bootstrap.min.css" rel="stylesheet" integrity="sha384-WTtvlZJeRyCiKUtbQ88X1x9uHmKi0eHCbQ8irbzqSLkE0DpAZuixT5yFvgX0CjIu" crossorigin="anonymous">  --%>
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css" rel="stylesheet" integrity="sha384-N8DsABZCqc1XWbg/bAlIDk7AS/yNzT5fcKzg/TwfmTuUqZhGquVmpb5VvfmLcMzp" crossorigin="anonymous">
-    <%--<link rel="stylesheet" href="css/style.css">--%>
+    <link rel="stylesheet" href="css/sty.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <title>Sign-In</title>
 </head>
 <body>
+<%@ include file="FRAGMENTS/header.jsp"%>
 
-<div class="container"><br/>
-    <form id="formCustomerContact" method="post" action="SignIn">
-        <fieldset>
-            <legend>Sign In Form</legend>
-                <div>
-                    <p>
-                    </p>
-                </div>
-            <div class="form-group">
-                <label for="userName">*Username:</label>
-                <input type="text" class="form-control" id="userName" name="userName" aria-describedby="userNameHelp" placeholder="e.g. John321" title="Enter your username" autofocus>
-                <small id="userNameHelp" class="form-text text-muted">Enter your username.</small>
+<div class="login-div">
+    <div class="row">
+        <div class="logo">
+            <img src="images/di.png" style="height: 100px; width: 100px;" alt="">
+        </div>
+    </div>
+    <div class="row center-align">
+        <h5>Sign in</h5>
+        <h6>MUM Dictionary Account</h6>
+    </div>
+
+
+    <form action="signin-form-data-validator" method="post">
+    
+    <c:if test="${isErrMsgsPresent == true }">
+                    <div>
+                        <p>
+                            ${errMsgs}
+                        </p>
+                    </div>
+                </c:if>
+                
+            <c:if test="${isAccountNotExist == true}">
+            	<div>
+            		<p>${errAccount}</p>
+            	</div>            
+            </c:if>
+    
+    
+    
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="username_input" type="text" name="userName" class="validate">
+                <label for="username_input">Username</label>
             </div>
-            <div class="form-group">
-                <label for="password">*Password:</label>
-                <input type="password" class="form-control" id="password" name="password" aria-describedby="userNameHelp" placeholder="xxxxx" title="Enter your password" autofocus>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input name="password" id="password_input" type="password" class="validate">
+                <label for="password_input">Password</label>
+                <div><a href="#"><b>Forgot Password?</b></a></div>
             </div>
-            <button id="btnSubmit" type="submit" class="btn btn-primary btn-block">Submit</button>
-        </fieldset>
+        </div>
+
+        <div class="row">
+            <div class="col s12">Not your computer? Use a Private Window to sign in.
+            </div>
+        </div>
+        <div class="row"></div>
+
+        <div class="row">
+            <div class="col s6"><a href="./SignUp.jsp">Create account</a></div>
+            <div class="col s6 right-align"><button type="submit" class="waves-effect waves-light btn">Login</button></div>
+        </div>
+
     </form>
-</div>
-<div class="container">
-    <br/>
-    <br/>
-    <span class="text-muted">Hit Count for this page: 1</span>
-    <span style="float:right;" class="text-muted">Total Hit Count for the entire WebApp: 4</span>
+
 </div>
 
+<%-- <%@ include file="FRAGMENTS/footer.jsp"%>
+ --%>
 </body>
 </html>

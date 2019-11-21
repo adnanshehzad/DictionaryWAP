@@ -21,22 +21,22 @@ var dictionary = [
 
 
     {
-        word:"apple",
-        def:"apple is a fruit",
-        syn:["pine","mango","grapes"]
+        word:"computer",
+        def:"comp is a computer",
+        syn:["lenovo","dell","grapes"]
     },
 
 
     {
-        word:"apple",
-        def:"apple is a fruit",
-        syn:["pine","mango","grapes"]
+        word:"baby",
+        def:"new child in a family",
+        syn:["cute","little","grapes"]
     },
 
     {
-        word:"apple",
-        def:"apple is a fruit",
-        syn:["pine","mango","grapes"]
+        word:"mobile",
+        def:"mobile is a phoine",
+        syn:["iphone","samsung","grapes"]
     },
     {
         word:"apple",
@@ -57,8 +57,8 @@ var dictionary = [
 init = function(){
 
     for (var i=0;i<dictionary.length;i++){
-        document.getElementById('word_list').innerHTML += "<li onclick = 'show(" + i +  ")' >" +   
-        dictionary[i].word  + "</li>";
+        document.getElementById('word_list').innerHTML += "<li onclick = 'show(" + i +  ")' >" +
+            dictionary[i].word  + "</li>";
 
     }
 
@@ -82,7 +82,44 @@ show = function(i){
 
 }
 
-show(0);
+show(1);
+
+
+search = function(){
+
+    query = document.getElementById('search').value;
+    console.log(query);
+
+    if (query ==""){
+        return;
+    }
+
+    found = -1;
+
+    for (var index = 0; index < dictionary.length; index++) {
+        if (query == dictionary[index].word){
+            found = index;
+            break;
+        }
+
+        else{
+            document.getElementById('word_text').innerHTML = "Word not found";
+            document.getElementById('definition').innerHTML = "The word you entered is not in our dictionary";
+            document.getElementById('synonym').innerHTML = "No synonyms";
+
+        }
+
+    }
+
+
+
+    if (found >=0){
+        show(found);
+
+    }
+
+
+}
 
 
 

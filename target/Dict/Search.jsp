@@ -97,8 +97,8 @@ if (session.getAttribute("username") == null)
             <p id="defiition"><%=newDef%></p>
             <hr>
 
-            <h3>Synonyms: </h3>
-            <li id="synonym"> syn1</li>
+            <h3>Part of Speech: </h3>
+            <p id="pos"><%=newPos%></p>
 
         </div>
     </div>

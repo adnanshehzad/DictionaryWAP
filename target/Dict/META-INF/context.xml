@@ -10,6 +10,6 @@
             driverClassName="com.mysql.cj.jdbc.Driver"
             url="jdbc:mysql://localhost:3306/dictionary_schema"
             username="root"
-            password="sibtain"
+            password="root123"
     />
 </Context>

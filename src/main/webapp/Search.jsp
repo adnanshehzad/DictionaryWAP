@@ -25,11 +25,15 @@
 <body>
 
 <%
-if (session.getAttribute("username") == null)
+    List<String> newWords =null;
+if (session.getAttribute("username") == null) {
     response.sendRedirect(request.getContextPath() + "/SignIn.jsp");
 
-    List<String> newWords = (List<String>)session.getAttribute("previouswords");
+}
+    else{
+    newWords = (List<String>)session.getAttribute("previouswords");
     System.out.println("In Search List is "+ newWords.toString());
+    }
 %>
 
 
@@ -63,6 +67,8 @@ if (session.getAttribute("username") == null)
             <ul id="word_lst"></ul>
 
             <%
+
+
                 for (int i=0;i<newWords.size();i++){
                     String st = newWords.get(i);
 

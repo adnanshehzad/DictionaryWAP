@@ -6,6 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 
+
+<%@ page isELIgnored="false" %> 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,6 +23,7 @@
     <title>Sign-In</title>
 </head>
 <body>
+<%@ include file="FRAGMENTS/header.jsp"%>
 
 <div class="login-div">
     <div class="row">
@@ -31,7 +37,24 @@
     </div>
 
 
-    <form action="" method="post">
+    <form action="signin-form-data-validator" method="post">
+    
+    <c:if test="${isErrMsgsPresent == true }">
+                    <div>
+                        <p>
+                            ${errMsgs}
+                        </p>
+                    </div>
+                </c:if>
+                
+            <c:if test="${isAccountNotExist == true}">
+            	<div>
+            		<p>${errAccount}</p>
+            	</div>            
+            </c:if>
+    
+    
+    
         <div class="row">
             <div class="input-field col s12">
                 <input id="username_input" type="text" name="userName" class="validate">
@@ -62,5 +85,7 @@
 
 </div>
 
+<%-- <%@ include file="FRAGMENTS/footer.jsp"%>
+ --%>
 </body>
 </html>
